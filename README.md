@@ -7,9 +7,9 @@ This project is a reproduction of the Twitter mobile application using an OAuth 
 The following user stories are in progress:
 
 - [X] User sees app icon in home screen and styled launch screen.
-- [ ] User can sign in using OAuth login flow.
+- [X] User can sign in using OAuth login flow.
 - [ ] User can Logout.
-- [ ] Create Data Models for User and Tweet.
+- [X] Create Data Models for User and Tweet.
 - [ ] User can view last 20 tweets from their home timeline with the user profile picture, username, tweet text, and timestamp.
 - [ ] User can pull to refresh.
 - [ ] User can tap the retweet and favorite buttons in a tweet cell to retweet and/or favorite a tweet.
