@@ -9,12 +9,11 @@
 import UIKit
 
 class TimelineViewController: UIViewController {
-
+    
     // Event Handlers
     @IBAction func didTapLogout(_ sender: Any) {
-        print("Logout Functionality")
+        APIManager.shared.logout()
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

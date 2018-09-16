@@ -12,7 +12,7 @@ import OAuthSwift
 import OAuthSwiftAlamofire
 import KeychainAccess
 
-class APIManager: SessionManager {
+class APIManager : SessionManager {
     
     // MARK: TODO: Add App Keys
     static let consumerKey = "jwDoeqfDtsaDI9eEs9OYHY1d3"
@@ -38,10 +38,8 @@ class APIManager: SessionManager {
                 if let error = error {
                     failure(error)
                 } else if let user = user {
-                    print("Welcome \(user.name)")
-                    
                     // MARK: TODO: set User.current, so that it's persisted
-                    
+                    User.current = user
                     success()
                 }
             })
@@ -110,6 +108,14 @@ class APIManager: SessionManager {
         }
     }
     
+    func logout() {
+        User.current = nil
+        // TODO: 2. Deauthorize OAuth tokens
+        self.clearCredentials()
+        // 3. Post logout notification
+        NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
+    }
+    
     // MARK: TODO: Favorite a Tweet
     
     // MARK: TODO: Un-Favorite a Tweet
@@ -128,7 +134,6 @@ class APIManager: SessionManager {
     
     //MARK: OAuth
     static var shared: APIManager = APIManager()
-    
     var oauthManager: OAuth1Swift!
     
     // Private init for singleton only

@@ -12,46 +12,42 @@ class User {
     
     var name: String
     var screenName: String?
-    //banner
-    //dictionary of tweets
-    //basic profile info
-   var profilepic: URL?
+    var profilepic: URL?
     var friendcount: Int?
     var userid: Int64?
     var favoritecount: Int?
 
+    // Dictionary
     var dictionary: [String: Any]?
-    
-    
     init(dictionary: [String: Any]) {
         self.dictionary = dictionary
         name = dictionary["name"] as! String
         
-        if let profile: String = dictionary["profile_image_url_https"] as? String{
-       print(profile)
-            
-        profilepic = URL(string: profile)!
+        if let profile: String = dictionary["profile_image_url_https"] as? String {
+            print(profile)
+            profilepic = URL(string: profile)!
         }
         
         if let screen = dictionary["screen_name"] {
-            var nam: String = screen as! String
-            self.screenName = nam
-            
+            var name: String = screen as! String
+            self.screenName = name
         }
         
         friendcount = dictionary["friends_count"] as! Int
-       guard let twitid: NSNumber = dictionary["id"] as? NSNumber else {
+        
+        guard let twitid: NSNumber = dictionary["id"] as? NSNumber else {
             print("twitter id error")
             return
         }
-      userid = twitid.int64Value
-        //userid = dictionary["id"] as! Int64
+        
+        userid = twitid.int64Value
         favoritecount = dictionary["favourites_count"] as! Int
         print("frineds \(friendcount)")
- 
-
+        
     }
     
+    // User
+    private static var _current: User?
     static var current: User?{
         get{
             let defaults = UserDefaults.standard
@@ -63,12 +59,12 @@ class User {
         }
         set(user){
             let defaults = UserDefaults.standard
-            if let user = user{
+            if let user = user {
                 let data = try! JSONSerialization.data(withJSONObject: user.dictionary, options: [])
                 defaults.set(data, forKey: "currentUserData")
             }else{
                 defaults.removeObject(forKey: "currentUserData")
             }
         }
-}
+    }
 }
