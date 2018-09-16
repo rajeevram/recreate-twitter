@@ -26,9 +26,6 @@ class Tweet {
             id = twitid.int64Value
             
         }
-        
-      
-        
         text = dictionary["text"] as! String
         favoriteCount = dictionary["favorite_count"] as? Int
         favorited = dictionary["favorited"] as? Bool
@@ -39,7 +36,7 @@ class Tweet {
         let user = dictionary["user"] as! [String: Any]
         
         let g = user["screen_name"]
-        print("screen name \(g.debugDescription)")
+        //print("screen name \(g.debugDescription)")
         self.user = User(dictionary: user)
         
         let createdAtOriginalString = dictionary["created_at"] as! String

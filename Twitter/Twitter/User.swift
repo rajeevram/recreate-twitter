@@ -24,7 +24,7 @@ class User {
         name = dictionary["name"] as! String
         
         if let profile: String = dictionary["profile_image_url_https"] as? String {
-            print(profile)
+            //print(profile)
             profilepic = URL(string: profile)!
         }
         
@@ -36,13 +36,13 @@ class User {
         friendcount = dictionary["friends_count"] as! Int
         
         guard let twitid: NSNumber = dictionary["id"] as? NSNumber else {
-            print("twitter id error")
+            print("Twitter ID Error")
             return
         }
         
         userid = twitid.int64Value
         favoritecount = dictionary["favourites_count"] as! Int
-        print("frineds \(friendcount)")
+        //print("frineds \(friendcount)")
         
     }
     
