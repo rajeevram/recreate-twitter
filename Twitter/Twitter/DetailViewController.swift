@@ -43,6 +43,14 @@ class DetailViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ReplySegue") {
+            if let composeView = segue.destination as? ComposeViewController {
+                composeView.isReply = true
+                composeView.replyName = user?.screenName
+            }
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -50,6 +58,7 @@ class DetailViewController: UIViewController {
     
     // Event Handlers
     @IBAction func onTapReply(_ sender: Any) {
+        self.performSegue(withIdentifier: "ReplySegue", sender: nil)
     }
     
 

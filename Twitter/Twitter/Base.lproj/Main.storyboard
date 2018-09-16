@@ -163,7 +163,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1660" y="-769"/>
+            <point key="canvasLocation" x="1660" y="-779"/>
         </scene>
         <!--Home-->
         <scene sceneID="5vf-Kh-7ye">
@@ -452,11 +452,12 @@
                         <outlet property="tweetCount" destination="L9o-HU-1BY" id="IHa-KR-YHA"/>
                         <outlet property="tweetTextLabel" destination="G6g-Lz-ryv" id="XrX-xb-oXM"/>
                         <outlet property="usernameLabel" destination="5SV-sA-zOd" id="Xvl-Ic-mDA"/>
+                        <segue destination="ura-Cs-lQi" kind="presentation" identifier="ReplySegue" id="NrS-Wq-ujN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goi-xp-mrf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2480.8000000000002" y="36.431784107946029"/>
+            <point key="canvasLocation" x="2481" y="37"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WXZ-z8-8LI">
@@ -494,6 +495,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="V01-Hd-zyW"/>
+        <segue reference="NrS-Wq-ujN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

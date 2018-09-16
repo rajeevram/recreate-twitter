@@ -21,6 +21,8 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     weak var delegate: ComposeViewControllerDelegate?
     var characterLimit : Int = 141
     var user : User?
+    var isReply : Bool = false
+    var replyName : String?
     
     // Event Handlers
     @IBAction func onTapTweet(_ sender: Any) {
@@ -45,9 +47,9 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     // Override
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUserInformation()
         tweetTextView.textColor = UIColor.lightGray
         tweetTextView.delegate = self as UITextViewDelegate
+        updateUserInformation()
     }
     
     func updateUserInformation() {
@@ -58,6 +60,10 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
                 profilePicture.af_setImage(withURL: propicURL)
             }
             
+        }
+        if (isReply), let replyName = self.replyName {
+            tweetTextView.textColor = UIColor.black
+            tweetTextView.text = "@\(replyName)"
         }
     }
     
