@@ -23,6 +23,7 @@ class TweetCell: UITableViewCell {
     var tweet : Tweet?
     var user : User?
     var parentView : TimelineViewController?
+    var indexPath : IndexPath?
     
     // Setup
     func updateAllContent() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDataSource {
+class TimelineViewController: UIViewController, UITableViewDataSource, ComposeViewControllerDelegate {
     
     // Graphics
     @IBOutlet weak var tweetTableView: UITableView!
@@ -54,7 +54,28 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
         APIManager.shared.logout()
     }
     
-    // Protocol
+    @IBAction func didTapCompose(_ sender: Any) {
+        self.performSegue(withIdentifier: "ComposeSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ComposeSegue") {
+            if let composeView = segue.destination as? ComposeViewController {
+                composeView.delegate = self
+                composeView.user = User.current
+            }
+        }
+        if (segue.identifier == "DetailSegue") {
+            if let detailView = segue.destination as? DetailViewController {
+                if let cell = sender as! TweetCell? {
+                    detailView.tweet = tweets[(cell.indexPath?.row)!]
+                }
+                detailView.user = User.current
+            }
+        }
+    }
+    
+    // Delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets.count
     }
@@ -63,9 +84,16 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
         let cell = tweetTableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         cell.tweet = tweets[indexPath.row]
         cell.user = User.current
+        cell.indexPath = indexPath
         cell.updateAllContent()
         cell.parentView = self as TimelineViewController
         return cell
+    }
+    
+    // Protocol
+    func did(post : Tweet) {
+        completeNetworkRequest()
+        //print("The delegation worked!")
     }
     
 }

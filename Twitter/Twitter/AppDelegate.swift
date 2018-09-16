@@ -17,18 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // MARK: TODO: Check for logged in user
         if User.current != nil {
+            // Navigation Controller
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let timelineViewController = storyboard.instantiateViewController(withIdentifier: "TimelineViewController") as! TimelineViewController
             let navigationController = UINavigationController.init(rootViewController: timelineViewController)
-//            if let window = self.window, let rootViewController = window.rootViewController {
-//                var currentController = rootViewController
-//                while let presentedController = currentController.presentedViewController {
-//                    currentController = presentedController
-//                }
-//                currentController.present(navigationController, animated: true, completion: nil)
-//            }
             window?.rootViewController = navigationController
-            //window?.makeKeyAndVisible()
+            // Navigation Bar
+             let navigationBarProperties = UINavigationBar.appearance()
+             navigationBarProperties.barTintColor = UIColor(red: 29/255, green: 161/255, blue: 242/255, alpha: 1)
+            navigationBarProperties.tintColor = UIColor.white
+            navigationBarProperties.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         }
         
         NotificationCenter.default.addObserver(forName: Notification.Name("didLogout"), object: nil, queue: OperationQueue.main)
