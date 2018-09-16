@@ -20,18 +20,56 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
     
-    func updateAllContent(tweet : Tweet, user: User) {
-        if let propicURL = user.profilepic {
-            profilePicture.af_setImage(withURL: propicURL)
+    var tweet : Tweet?
+    var user : User?
+    var parentView : TimelineViewController?
+    
+    // Setup
+    func updateAllContent() {
+        if let tweet = self.tweet, let user = self.user {
+            if let propicURL = user.profilepic {
+                profilePicture.af_setImage(withURL: propicURL)
+            }
+            timeStampLabel.text = tweet.createdAtString
+            fullNameLabel.text = user.name
+            usernameLabel.text = "@\(user.screenName!)"
+            tweetTextLabel.text = tweet.text
+            retweetButton.setTitle("\(tweet.retweetCount)", for: .normal)
+            favoriteButton.setTitle("\(tweet.favoriteCount!)", for: .normal)
         }
-        timeStampLabel.text = tweet.createdAtString
-        fullNameLabel.text = user.name
-        usernameLabel.text = "@\(user.screenName!)"
-        tweetTextLabel.text = tweet.text
-        retweetButton.setTitle("\(tweet.retweetCount)", for: .normal)
-        favoriteButton.setTitle("\(tweet.favoriteCount!)", for: .normal)
     }
     
+    func updateFavoriteTweetCounts() {
+        if let tweet = self.tweet {
+            favoriteButton.setTitle("\(tweet.favoriteCount!)", for: .normal)
+            retweetButton.setTitle("\(tweet.retweetCount)", for: .normal)
+        }
+    }
+
+    @IBAction func onTapFavorite(_ sender: Any) {
+        if (tweet!.favorited != true) {
+            APIManager.shared.favorite(self.tweet!) { (tweet, error) in
+                if let  error = error {
+                    print("Error Favoriting Tweet: \(error.localizedDescription)")
+                } else {
+                    self.parentView?.completeNetworkRequest()
+                    self.favoriteButton.setImage(UIImage(named: "favor-icon-red.png"), for: .normal)
+                }
+            }
+        }
+        else {
+            APIManager.shared.unfavorite(self.tweet!) { (tweet, error) in
+                if let  error = error {
+                    print("Error Favoriting Tweet: \(error.localizedDescription)")
+                } else {
+                    self.parentView?.completeNetworkRequest()
+                    self.favoriteButton.setImage(UIImage(named: "favor-icon.png"), for: .normal)
+                }
+            }
+        }
+    }
+    
+    // Override
     override func awakeFromNib() {
         super.awakeFromNib()
     }

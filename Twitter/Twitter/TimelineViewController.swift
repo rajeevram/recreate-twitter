@@ -21,6 +21,8 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         // Table View Data Source
         tweetTableView.dataSource = self
+        tweetTableView.rowHeight = UITableViewAutomaticDimension
+        tweetTableView.estimatedRowHeight = 100
         // Pull-To-Refresh
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(TimelineViewController.completeNetworkRequest), for: .valueChanged)
@@ -33,6 +35,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
         super.didReceiveMemoryWarning()
     }
     
+    // Network Request
     func completeNetworkRequest() {
         APIManager.shared.getHomeTimeLine { (tweets, error) in
             if let error = error {
@@ -51,15 +54,17 @@ class TimelineViewController: UIViewController, UITableViewDataSource {
         APIManager.shared.logout()
     }
     
+    // Protocol
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tweetTableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        let tweet = tweets[indexPath.row]
-        let user = User.current
-        cell.updateAllContent(tweet: tweet, user: user!)
+        cell.tweet = tweets[indexPath.row]
+        cell.user = User.current
+        cell.updateAllContent()
+        cell.parentView = self as TimelineViewController
         return cell
     }
     
