@@ -13,7 +13,7 @@ The following user stories are in progress:
 - [X] User can view last 20 tweets from their home timeline with the user profile picture, username, tweet text, and timestamp.
 - [X] User can pull to refresh.
 - [X] User can tap the favorite button in a cell to favorite and unfavorite tweet.
-- [ ] User can tap the retweet button in a cell to retweet and unretweet.
+- [X] User can tap the retweet button in a cell to retweet and unretweet.
 - [X] Using AutoLayout, the Tweet cell should adjust it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation.
 - [X] The current signed in user will be persisted across restarts.
 - [ ] User can tap on a tweet to view it in a detail view, with controls to retweet, favorite, and reply.
