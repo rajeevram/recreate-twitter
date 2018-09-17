@@ -26,11 +26,12 @@ class DetailViewController: UIViewController {
     // Override
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.user = self.tweet!.user
         updateUserInformation()
     }
     
     func updateUserInformation() {
-        if let tweet = self.tweet, let user = self.user {
+        if let tweet = self.tweet, let user = self.user  {
             if let propicURL = user.profilepic {
                 profilePicture.af_setImage(withURL: propicURL)
             }

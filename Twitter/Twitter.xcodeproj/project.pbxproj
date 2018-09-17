@@ -16,6 +16,7 @@
 		BB472CFD214480B700F32AED /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB472CFC214480B700F32AED /* KeychainAccess.framework */; };
 		BB7A41EC214ED6E7009583AB /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A41EB214ED6E7009583AB /* ComposeViewController.swift */; };
 		BB7A41EE214EFCF7009583AB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A41ED214EFCF7009583AB /* DetailViewController.swift */; };
+		BB7A41F0214F23F5009583AB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A41EF214F23F5009583AB /* ProfileViewController.swift */; };
 		BBEC0143214DDEFB00EAB2B7 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC0142214DDEFB00EAB2B7 /* TweetCell.swift */; };
 		BBFDF5D82144766000D78BAF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFDF5D72144766000D78BAF /* User.swift */; };
 		BBFDF5DA2144766700D78BAF /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFDF5D92144766600D78BAF /* Tweet.swift */; };
@@ -62,6 +63,7 @@
 		BB472CFC214480B700F32AED /* KeychainAccess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KeychainAccess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB7A41EB214ED6E7009583AB /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		BB7A41ED214EFCF7009583AB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		BB7A41EF214F23F5009583AB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BBEC0142214DDEFB00EAB2B7 /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		BBFDF5D72144766000D78BAF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BBFDF5D92144766600D78BAF /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				BBEC0142214DDEFB00EAB2B7 /* TweetCell.swift */,
 				BB7A41EB214ED6E7009583AB /* ComposeViewController.swift */,
 				BB7A41ED214EFCF7009583AB /* DetailViewController.swift */,
+				BB7A41EF214F23F5009583AB /* ProfileViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 			files = (
 				ED1AFD611E94496E00FD4B90 /* LoginViewController.swift in Sources */,
 				BBEC0143214DDEFB00EAB2B7 /* TweetCell.swift in Sources */,
+				BB7A41F0214F23F5009583AB /* ProfileViewController.swift in Sources */,
 				BB7A41EE214EFCF7009583AB /* DetailViewController.swift in Sources */,
 				BEBC8368211F4199003A5FE1 /* TimelineViewController.swift in Sources */,
 				BB7A41EC214ED6E7009583AB /* ComposeViewController.swift in Sources */,

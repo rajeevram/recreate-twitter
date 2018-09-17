@@ -19,6 +19,11 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposeVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        print(User.current?.followercount)
+//        print(User.current?.friendcount)
+//        print(User.current?.statusCount)
+//        print(User.current?.bannerpic)
+//        print(User.current?.profilepic)
         // Table View Data Source
         tweetTableView.dataSource = self
         tweetTableView.rowHeight = UITableViewAutomaticDimension
@@ -73,6 +78,12 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposeVi
                 detailView.user = User.current
             }
         }
+        if (segue.identifier == "ProfileSegue") {
+            if let profileView = segue.destination as? ProfileViewController {
+                profileView.user = User.current
+            }
+            
+        }
     }
     
     // Delegate
@@ -82,8 +93,9 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposeVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tweetTableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-        cell.tweet = tweets[indexPath.row]
-        cell.user = User.current
+        let tweet = tweets[indexPath.row]
+        cell.tweet = tweet
+        cell.user = tweet.user // User.current
         cell.indexPath = indexPath
         cell.updateAllContent()
         cell.parentView = self as TimelineViewController

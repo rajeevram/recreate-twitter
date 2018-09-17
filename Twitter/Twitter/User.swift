@@ -13,9 +13,12 @@ class User {
     var name: String
     var screenName: String?
     var profilepic: URL?
+    var bannerpic: URL?
     var friendcount: Int?
+    var followercount : Int?
     var userid: Int64?
     var favoritecount: Int?
+    var statusCount : Int?
 
     // Dictionary
     var dictionary: [String: Any]?
@@ -24,16 +27,22 @@ class User {
         name = dictionary["name"] as! String
         
         if let profile: String = dictionary["profile_image_url_https"] as? String {
-            //print(profile)
             profilepic = URL(string: profile)!
         }
         
+        if let banner : String = dictionary["profile_banner_url"] as? String {
+            bannerpic = URL(string: banner)!
+        }
+        
         if let screen = dictionary["screen_name"] {
-            var name: String = screen as! String
-            self.screenName = name
+            self.screenName = screen as! String
         }
         
         friendcount = dictionary["friends_count"] as! Int
+        followercount = dictionary["followers_count"] as! Int
+        statusCount = dictionary["statuses_count"] as! Int
+        
+        //print(dictionary)
         
         guard let twitid: NSNumber = dictionary["id"] as? NSNumber else {
             print("Twitter ID Error")

@@ -26,7 +26,11 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     
     // Event Handlers
     @IBAction func onTapTweet(_ sender: Any) {
-        APIManager.shared.composeTweet(with: self.tweetTextView.text) { (tweet, error) in
+        let tweetText = tweetTextView.text!
+        if (tweetText.count == 0 || tweetTextView.backgroundColor == UIColor.lightGray) {
+            return;
+        }
+        APIManager.shared.composeTweet(with: tweetText) { (tweet, error) in
             if let error = error {
                 print("Error composing Tweet: \(error.localizedDescription)")
             } else if let tweet = tweet {
@@ -62,8 +66,8 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
             
         }
         if (isReply), let replyName = self.replyName {
+            tweetTextView.text = "@\(replyName) "
             tweetTextView.textColor = UIColor.black
-            tweetTextView.text = "@\(replyName)"
         }
     }
     
