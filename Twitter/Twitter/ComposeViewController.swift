@@ -16,6 +16,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var tweetTextView: UITextView!
     @IBOutlet weak var charCountLabel: UILabel!
+    @IBOutlet weak var postButton: UIBarButtonItem!
     
     // Backend Variables
     weak var delegate: ComposeViewControllerDelegate?
@@ -27,9 +28,6 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     // Event Handlers
     @IBAction func onTapTweet(_ sender: Any) {
         let tweetText = tweetTextView.text!
-        if (tweetText.count == 0 || tweetTextView.backgroundColor == UIColor.lightGray) {
-            return;
-        }
         APIManager.shared.composeTweet(with: tweetText) { (tweet, error) in
             if let error = error {
                 print("Error composing Tweet: \(error.localizedDescription)")
@@ -51,6 +49,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     // Override
     override func viewDidLoad() {
         super.viewDidLoad()
+        postButton.isEnabled = false
         tweetTextView.textColor = UIColor.lightGray
         tweetTextView.delegate = self as UITextViewDelegate
         updateUserInformation()
@@ -80,6 +79,11 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         let newText = NSString(string: textView.text!).replacingCharacters(in: range, with: text)
         let current = newText.count
         charCountLabel.text = "Character Count: \(current)"
+        if (current == 0) {
+            postButton.isEnabled = false
+            return true;
+        }
+        postButton.isEnabled = true
         if (current < characterLimit) {
             charCountLabel.textColor = UIColor.lightGray
             return true
@@ -103,6 +107,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         if (textView.text.count == 0) {
             textView.text = "Write a post..."
             textView.textColor = UIColor.lightGray
+            postButton.isEnabled = false
         }
     }
 
