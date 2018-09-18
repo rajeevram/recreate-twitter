@@ -114,8 +114,8 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposeVi
     
     // Protocol
     func did(post : Tweet) {
+        updateUserInformation()
         completeNetworkRequest()
-        //print("The delegation worked!")
     }
     
 }
