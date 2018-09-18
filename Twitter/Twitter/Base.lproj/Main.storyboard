@@ -484,7 +484,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="ahd-H1-NdE">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="edit-icon" id="QW1-Ui-I2Q"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="edit-icon" id="QW1-Ui-I2Q">
+                            <connections>
+                                <action selector="onTapCompose:" destination="w6F-yT-kOd" id="zct-JD-Ydu"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundView" destination="awQ-Bw-Y6F" id="Ozv-UL-f0O"/>

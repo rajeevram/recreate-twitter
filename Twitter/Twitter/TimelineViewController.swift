@@ -19,11 +19,8 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposeVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(User.current?.followercount)
-//        print(User.current?.friendcount)
-//        print(User.current?.statusCount)
-//        print(User.current?.bannerpic)
-//        print(User.current?.profilepic)
+        // Update User
+        self.updateUserInformation()
         // Table View Data Source
         tweetTableView.dataSource = self
         tweetTableView.rowHeight = UITableViewAutomaticDimension
@@ -38,6 +35,18 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposeVi
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // Update User
+    func updateUserInformation() {
+        APIManager.shared.getCurrentAccount { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            if let user = user {
+                User.current = user
+            }
+        }
     }
     
     // Network Request
@@ -64,6 +73,7 @@ class TimelineViewController: UIViewController, UITableViewDataSource, ComposeVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.updateUserInformation()
         if (segue.identifier == "ComposeSegue") {
             if let composeView = segue.destination as? ComposeViewController {
                 composeView.delegate = self

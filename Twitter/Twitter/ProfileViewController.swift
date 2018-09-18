@@ -55,6 +55,11 @@ class ProfileViewController: UIViewController {
         labelView.layer.borderColor = UIColor.black.cgColor
     }
     
+    
+    @IBAction func onTapCompose(_ sender: Any) {
+        self.performSegue(withIdentifier: "ComposeProfile", sender: nil)
+    }
+    
     // Override
     override func viewDidLoad() {
         organizeProperColors()

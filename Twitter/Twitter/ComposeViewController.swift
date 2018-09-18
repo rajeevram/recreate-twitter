@@ -40,6 +40,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func onTapCancel(_ sender: Any) {
         self.performSegue(withIdentifier: "ReturnSegue", sender: nil)
+        APIManager.shared.updateTweetCount(user: User.current)
     }
     
     @IBAction func onTapElsewhere(_ sender: Any) {
