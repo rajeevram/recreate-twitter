@@ -38,12 +38,12 @@ This is my most complex iOS project as of September 2018. This combines a huge n
 **Backend Elements**: 
 - Learning the ins-and-outs of the OAuth Flow. What is authentication versus authorization? When should each be used?
 - Learning the ins-an-outs of the Twitter API. Their rate-limiting is super frustrating! But their documentation is quite fabulous and intuitive once you get into it.
-- Configuring the AppDelegate to respond in the correct sequence. The NotificationCenter (NSObject) class in Swift is what allows me to utilize the observer design pattern for optimal signin/signout functionality.
+- Configuring the AppDelegate to respond in the correct sequence. The NotificationCenter class in Swift is what allows me to utilize the observer design pattern for optimal signin/signout functionality.
 
 **Frontend Elements**:
 - Learning how to mediate between modal seuges and show segues; modal segues remove the navigation stack, so implementing them requires extra care.
-- Many graphic elements can only be adjusted programatically, which sometimes causes a rendering delay when loading this view. Plus, sometimes the storyboard and code conflict and it's not clear which gets precedence 
-- Frustrated with asynchronous newtork requests. They are obviously important to keep the UI.UX running smoothly, but information gets updated in a haphhazard way.
+- Many graphic elements can only be adjusted programatically, which sometimes causes a rendering delay when loading the view. Plus, sometimes the storyboard and code conflict and it's not clear which gets precedence 
+- Frustrated with asynchronous newtork requests. They are obviously important to keep the UI/UX running smoothly, but information gets updated in a haphhazard way.
 
 ## Credits
 
